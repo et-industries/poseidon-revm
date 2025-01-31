@@ -1,12 +1,11 @@
-use anyhow::{anyhow, bail};
 use revm::{
     bytecode::opcode,
     context::Context,
-    context_interface::result::{ExecutionResult, Output},
-    database::CacheDB,
-    database_interface::EmptyDB,
-    primitives::{hex, Bytes, TxKind},
-    transact_main, ExecuteCommitEvm,
+    context_interface::TransactionType,
+    database::{BenchmarkDB, FFADDRESS},
+    primitives::{address, TxKind, U256},
+    state::Bytecode,
+    ExecuteEvm,
 };
 
 /// Load storage from slot zero to memory
@@ -17,45 +16,28 @@ const RUNTIME_BYTECODE: &[u8] = &[
     0x05,
     opcode::PUSH1,
     0x03,
-    opcode::MULMOD,
+    opcode::MULADD,
     opcode::PUSH0,
     opcode::SSTORE,
 ];
 
 fn main() -> anyhow::Result<()> {
-    let bytecode: Bytes = [RUNTIME_BYTECODE].concat().into();
-    let mut ctx = Context::builder()
+    let auth = address!("0000000000000000000000000000000000000100");
+
+    let bytecode = Bytecode::new_legacy(RUNTIME_BYTECODE.into());
+
+    let mut ctx = Context::default()
+        .with_db(BenchmarkDB::new_bytecode(bytecode))
         .modify_tx_chained(|tx| {
-            tx.kind = TxKind::Create;
-            tx.data = bytecode.clone();
-        })
-        .with_db(CacheDB::<EmptyDB>::default());
+            tx.tx_type = TransactionType::Eip7702.into();
+            tx.authorization_list = vec![(Some(auth), U256::from(0), 0, FFADDRESS)];
+            tx.kind = TxKind::Call(auth);
+        });
 
-    println!("bytecode: {}", hex::encode(bytecode));
-    let ref_tx = ctx.exec_commit_previous()?;
-    let ExecutionResult::Success {
-        output: Output::Create(_, Some(address)),
-        ..
-    } = ref_tx
-    else {
-        bail!("Failed to create contract: {ref_tx:#?}");
-    };
+    let ok = ctx.exec_previous().unwrap();
 
-    println!("Created contract at {address}");
-    ctx.modify_tx(|tx| {
-        tx.kind = TxKind::Call(address);
-        tx.data = Default::default();
-        tx.nonce += 1;
-    });
+    let storage = ok.state.get(&auth).unwrap().storage.clone();
+    println!("{storage:#?}");
 
-    let result = transact_main(&mut ctx)?;
-    println!(
-        "{:#?}",
-        result
-            .state
-            .get(&address)
-            .ok_or_else(|| anyhow!("Contract not found"))?
-            .storage
-    );
     Ok(())
 }
