@@ -3640,7 +3640,7 @@ dependencies = [
 [[package]]
 name = "revm"
 version = "19.2.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "revm-bytecode",
  "revm-context",
@@ -3659,7 +3659,7 @@ dependencies = [
 [[package]]
 name = "revm-bytecode"
 version = "1.0.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "bitvec",
  "revm-primitives",
@@ -3670,7 +3670,7 @@ dependencies = [
 [[package]]
 name = "revm-context"
 version = "1.0.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "cfg-if",
  "derive-where",
@@ -3686,7 +3686,7 @@ dependencies = [
 [[package]]
 name = "revm-context-interface"
 version = "1.0.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "auto_impl",
  "revm-database-interface",
@@ -3699,7 +3699,7 @@ dependencies = [
 [[package]]
 name = "revm-database"
 version = "1.0.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "auto_impl",
  "revm-bytecode",
@@ -3711,7 +3711,7 @@ dependencies = [
 [[package]]
 name = "revm-database-interface"
 version = "1.0.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "auto_impl",
  "revm-primitives",
@@ -3722,7 +3722,7 @@ dependencies = [
 [[package]]
 name = "revm-handler"
 version = "1.0.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "revm-bytecode",
  "revm-context",
@@ -3739,7 +3739,7 @@ dependencies = [
 [[package]]
 name = "revm-handler-interface"
 version = "1.0.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "auto_impl",
  "revm-primitives",
@@ -3749,7 +3749,7 @@ dependencies = [
 [[package]]
 name = "revm-interpreter"
 version = "15.0.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "revm-bytecode",
  "revm-context-interface",
@@ -3761,7 +3761,7 @@ dependencies = [
 [[package]]
 name = "revm-precompile"
 version = "16.0.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "aurora-engine-modexp",
  "blst",
@@ -3782,7 +3782,7 @@ dependencies = [
 [[package]]
 name = "revm-primitives"
 version = "15.1.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "alloy-primitives",
 ]
@@ -3790,7 +3790,7 @@ dependencies = [
 [[package]]
 name = "revm-specification"
 version = "1.0.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "enumn",
  "revm-primitives",
@@ -3800,7 +3800,7 @@ dependencies = [
 [[package]]
 name = "revm-state"
 version = "1.0.0"
-source = "git+https://github.com/et-industries/revm.git#280a581a22ca93131584bbe773a50fcca0c3e81a"
+source = "git+https://github.com/et-industries/revm.git#f3111e563af05580de12155167660bd446cb5b08"
 dependencies = [
  "bitflags 2.8.0",
  "revm-bytecode",

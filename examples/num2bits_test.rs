@@ -8,15 +8,41 @@ use revm::{
     ExecuteEvm,
 };
 
-/// Load storage from slot zero to memory
 const RUNTIME_BYTECODE: &[u8] = &[
-    opcode::PUSH1,
-    0x02,
-    opcode::PUSH1,
-    0x05,
-    opcode::PUSH1,
-    0x03,
-    opcode::MULADD,
+    opcode::PUSH32,
+    u8::MAX,
+    0,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    0,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    0,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    u8::MAX,
+    opcode::NUM2BITS,
     opcode::PUSH0,
     opcode::SSTORE,
 ];
@@ -36,6 +62,7 @@ fn main() -> anyhow::Result<()> {
 
     let ok = ctx.exec_previous().unwrap();
 
+    println!("{:#?}", ok.result);
     let storage = ok.state.get(&auth).unwrap().storage.clone();
     println!("{storage:#?}");
 
